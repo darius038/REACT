@@ -9,13 +9,13 @@ class Main extends React.Component{
         this.state = {
             count: 0,
             moviesData: [],
-            isLoaded: false
+            isLoaded: true
         };
         this.handleClick = this.handleClick.bind(this);
     }
     async componentDidMount() {
         //1 - request for movies list by title
-        let request1 = await fetch("http://www.omdbapi.com/?i=tt3896198&apikey=9cce15d4&s=The%20matrix");
+        let request1 = await fetch("http://www.omdbapi.com/?i=tt3896198&apikey=9cce15d4&s=Star%20trek");
         let data1 = await request1.json();
         let movieList = await data1['Search'].map(movie=>movie['Title']);
 
@@ -65,8 +65,6 @@ class Main extends React.Component{
                     <div className="row">
                         {movies}
                     </div>
-                    <h2>{this.state.count} state</h2>
-                    <button type="button" className="btn btn-primary" onClick={this.handleClick}>Click</button>
                 </div>
             );
         }
